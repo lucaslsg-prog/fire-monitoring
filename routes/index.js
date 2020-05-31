@@ -21,7 +21,7 @@ module.exports = function(io){
     })
 
     router.get('/dashboard',(req,res)=>{
-        res.render("dashboard.html");
+        res.render("dashboard.html"); //acessar por http://localhost:3000/dashboard
     });
     return router;
 

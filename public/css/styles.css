@@ -1,7 +1,20 @@
+/*Reset CSS --> para poder alterar somente pelo css*/
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 #map {
     border: 1px solid #000;
     height: 600px; /* The height is 400 pixels */
     width: 100%; /* The width is the width of the web page */
     z-index: 777;
+    position: relative;
+}
+#gauge-sensor {
+    width: 300px;
+    height: 200px;
+    z-index: 999;
     position: relative;
 }
