@@ -2,137 +2,80 @@
     <head>
         <link rel="stylesheet" type="text/css" href="./scripts/bootstrap/dist/css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="./css/styles.css">
+        <link rel="stylesheet" type="text/css" href="./css/gauge.css">
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Dashboard</title>
     </head>
-    <body>
-        
-        <div id="map"></div>
-
-        <!-- Modal -->
-        <div class="modal fade" id="modalDevice" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-xl">
-                <div class="modal-content">
-
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">node-ufam-01</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
+        <body>
+            <div id="map"></div>
+                
+            <div id="pop-up" class="whiteWindow">
+                <style>
+                    .whiteWindow{
+                        width: 300px;
+                        height: 400px;
+                        z-index: 999;
+                        background-color:white;
+                        border: darkmagenta;
+                        display: none;
+                        margin-left: auto;
+                        margin-right: auto;
+                    }
+                </style>
+                <br></br>
+                <div class="gauge1">
+                    <div class="gauge_body1">
+                        <div class="gauge_fill1"></div>
+                        <div class="gauge_cover1"></div>
                     </div>
-
-                    <div class="modal-body text-center">
-                        <div class="row">
-                            <div class="col-sm-12 col-md-6">
-                                <!-- Injecting radial gauge -->
-                                <canvas id="gaugeGas" 
-                                data-type="radial-gauge"
-                                data-width="400"
-                                data-height="400"
-                                data-units="ppm"
-                                data-title="false"
-                                data-value="0"
-                                data-min-value="0"
-                                data-max-value="220"
-                                data-major-ticks="0,20,40,60,80,100,120,140,160,180,200,220"
-                                data-minor-ticks="2"
-                                data-stroke-ticks="false"
-                                data-highlights='[
-                                    { "from": 0, "to": 50, "color": "rgba(0,255,0,.15)" },
-                                    { "from": 50, "to": 100, "color": "rgba(255,255,0,.15)" },
-                                    { "from": 100, "to": 150, "color": "rgba(255,30,0,.25)" },
-                                    { "from": 150, "to": 200, "color": "rgba(255,0,225,.25)" },
-                                    { "from": 200, "to": 220, "color": "rgba(0,0,255,.25)" }
-                                ]'
-                                data-color-plate="#222"
-                                data-color-major-ticks="#f5f5f5"
-                                data-color-minor-ticks="#ddd"
-                                data-color-title="#fff"
-                                data-color-units="#ccc"
-                                data-color-numbers="#eee"
-                                data-color-needle-start="rgba(240, 128, 128, 1)"
-                                data-color-needle-end="rgba(255, 160, 122, .9)"
-                                data-value-box="true"
-                                data-animation-rule="bounce"
-                                data-animation-duration="500"
-                                data-font-value="Led"
-                                data-animated-value="true"
-                                ></canvas>
-                            </div>
-                            <div class="col-sm-12 col-md-6" >
-                                <!-- Injecting linear gauge -->
-                                <canvas data-type="linear-gauge"
-                                data-width="160"
-                                data-height="400"
-                                data-border-radius="20"
-                                data-borders="0"
-                                data-bar-stroke-width="20"
-                                data-minor-ticks="10"
-                                data-major-ticks="0,10,20,30,40,50,60,70,80,90,100"
-                                data-value="22.3"
-                                data-units="°C"
-                                data-color-value-box-shadow="false"
-                                ></canvas>
-                            </div>
-                            
-                        </div>
-                        <!--fim da linha 1 (sm-12->responsivo)-->
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <canvas data-type="linear-gauge"
-                                data-width="400"
-                                data-height="150"
-                                data-min-value="0"
-                                data-max-value="100"
-                                data-major-ticks="0,20,40,60,80,100"
-                                data-minor-ticks="10"
-                                data-stroke-ticks="true"
-                                data-color-plate="#fff"
-                                data-border-shadow-width="0"
-                                data-borders="false"
-                                data-bar-begin-circle="false"
-                                data-tick-side="left"
-                                data-number-side="left"
-                                data-needle-side="left"
-                                data-needle-type="line"
-                                data-needle-width="3"
-                                data-color-needle="#222"
-                                data-color-needle-end="#222"
-                                data-animation-duration="1500"
-                                data-animation-rule="linear"
-                                data-animation-target="plate"
-                                data-bar-width="5"
-                                data-ticks-width="50"
-                                data-ticks-width-minor="15"
-                            ></canvas>
-                            </div>
-                        </div>
-                        
-                    </div>
-
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+                <br></br>
+                <div class="gauge2">
+                    <div class="gauge_body2">
+                        <div class="gauge_fill2"></div>
+                        <div class="gauge_cover2"></div>
                     </div>
                 </div>
             </div>
-        </div>
-        
-        <script src="./scripts/axios/dist/axios.min.js" type="text/javascript"></script>
-        <script src="./scripts/socket.io-client/dist/socket.io.js" type="text/javascript"></script>
-        <script src="./scripts/canvas-gauges/gauge.min.js" type="text/javascript"></script>
-        <script src="./scripts/jquery/dist/jquery.min.js" type="text/javascript"></script>
-        <script src="./scripts/bootstrap/dist/js/bootstrap.min.js" type="text/javascript"></script>
+            <!--
+                <script>
+                const gaugeElement1 = document.querySelector(".gauge1");
+                const gaugeElement2 = document.querySelector(".gauge2");
+    
+                function setGaugeValue(gauge1,gauge2,value1,value2){
+                    document.getElementById("pop-up").style.display = "block";
+                    if(value1 < 0 || value1 > 1){
+                        return;
+                    }
+                    if(value2 < 0 || value2 > 1){
+                        return;
+                    }
+                    
+                    gauge1.querySelector(".gauge_fill1").style.transform = `rotate(${value1/2}turn)`;
+                    gauge1.querySelector(".gauge_cover1").textContent = `${Math.round(value1 * 100)}ppm`;
+    
+                    gauge2.querySelector(".gauge_fill2").style.transform = `rotate(${value2/2}turn)`;
+                    gauge2.querySelector(".gauge_cover2").textContent = `${Math.round(value2 * 100)}ppm`;
+                }
+    
+                setGaugeValue(gaugeElement1,gaugeElement2,0.9,0.36);
+            </script>
+            -->
+            
+            
+            <script src="./scripts/axios/dist/axios.min.js" type="text/javascript"></script>
+            <script src="./scripts/socket.io-client/dist/socket.io.js" type="text/javascript"></script>
+            <script src="./scripts/canvas-gauges/gauge.min.js" type="text/javascript"></script>
+            <script src="./scripts/jquery/dist/jquery.min.js" type="text/javascript"></script>
+            <script src="./scripts/bootstrap/dist/js/bootstrap.min.js" type="text/javascript"></script>
 
-        <script type="text/javascript" src="./js/script.js"></script>
-        <script type="text/javascript" src="./js/realtime.js"></script>
+        
+            <script type="text/javascript" src="./js/script.js"></script>
+            <script type="text/javascript" src="./js/realtime.js"></script>
 
-        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAn51vnthzG3sFMj3i-
-        ozZ09jwwpYTOyAA&callback=initMap"></script>
-        
-        
-        
-       
-
-    </body>
+            <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAn51vnthzG3sFMj3i-
+            ozZ09jwwpYTOyAA&callback=initMap"></script>
+            
+        </body>
 </html>
