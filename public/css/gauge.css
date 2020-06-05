@@ -1,14 +1,12 @@
-.gauge{
+.gauge {
     width: 100%;
     max-width: 250px;
-    font-family: 'Roboto',sans-serif;
+    font-family: "Roboto", sans-serif;
     font-size: 32px;
-    color: #791baf;
-    z-index: 999;
-}
-
-
-.gauge_body{
+    color: #004033;
+  }
+  
+  .gauge__body {
     width: 100%;
     height: 0;
     padding-bottom: 50%;
@@ -17,38 +15,35 @@
     border-top-left-radius: 100% 200%;
     border-top-right-radius: 100% 200%;
     overflow: hidden;
-    z-index: 999;
-
-}
-
-.gauge_fill{
+  }
+  
+  .gauge__fill {
     position: absolute;
     top: 100%;
     left: 0;
     width: inherit;
     height: 100%;
-    background: #42b615;
     transform-origin: center top;
+    background: #009578;
     transform: rotate(0.25turn);
     transition: transform 0.2s ease-out;
-    z-index: 999;
-}
+  }
 
-.gauge_cover{
+  .gauge__cover {
     width: 75%;
     height: 150%;
     background: #ffffff;
-    position: absolute;
     border-radius: 50%;
+    position: absolute;
     top: 25%;
     left: 50%;
-    position: absolute;
     transform: translateX(-50%);
-
+  
+    /* Text */
     display: flex;
     align-items: center;
     justify-content: center;
     padding-bottom: 25%;
     box-sizing: border-box;
-    z-index: 999;
-}
+  }
+  

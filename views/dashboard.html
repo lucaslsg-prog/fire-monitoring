@@ -9,61 +9,47 @@
     </head>
         <body>
             <div id="map"></div>
-                
-            <div id="pop-up" class="whiteWindow">
-                <style>
-                    .whiteWindow{
-                        width: 300px;
-                        height: 400px;
-                        z-index: 999;
-                        background-color:white;
-                        border: darkmagenta;
-                        display: none;
-                        margin-left: auto;
-                        margin-right: auto;
-                    }
-                </style>
-                <br></br>
-                <div class="gauge1">
-                    <div class="gauge_body1">
-                        <div class="gauge_fill1"></div>
-                        <div class="gauge_cover1"></div>
-                    </div>
-                </div>
-                <br></br>
-                <div class="gauge2">
-                    <div class="gauge_body2">
-                        <div class="gauge_fill2"></div>
-                        <div class="gauge_cover2"></div>
+            
+            <div class="modal" id="modalDevice" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-sm">
+                    <div class="modal-content">
+
+                        <div class="modal-header">
+                            <h6 id="titleDevice"></h6>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        
+
+                        <div class="modal-body">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-xs-12 col-md-6">
+                                        <h6 class="text-center">Gas</h6>
+                                        <div class="gauge gauge_gas">
+                                            <div class="gauge__body">
+                                                <div class="gauge__fill gauge__fill--gas"></div>
+                                                <div class="gauge__cover"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-md-6">
+                                        <h6 class="text-center">Fire</h6>
+                                        <div class="gauge gauge_fire">
+                                            <div class="gauge__body">
+                                                <div class="gauge__fill gauge__fill--fire"></div>
+                                                <div class="gauge__cover"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-            <!--
-                <script>
-                const gaugeElement1 = document.querySelector(".gauge1");
-                const gaugeElement2 = document.querySelector(".gauge2");
-    
-                function setGaugeValue(gauge1,gauge2,value1,value2){
-                    document.getElementById("pop-up").style.display = "block";
-                    if(value1 < 0 || value1 > 1){
-                        return;
-                    }
-                    if(value2 < 0 || value2 > 1){
-                        return;
-                    }
-                    
-                    gauge1.querySelector(".gauge_fill1").style.transform = `rotate(${value1/2}turn)`;
-                    gauge1.querySelector(".gauge_cover1").textContent = `${Math.round(value1 * 100)}ppm`;
-    
-                    gauge2.querySelector(".gauge_fill2").style.transform = `rotate(${value2/2}turn)`;
-                    gauge2.querySelector(".gauge_cover2").textContent = `${Math.round(value2 * 100)}ppm`;
-                }
-    
-                setGaugeValue(gaugeElement1,gaugeElement2,0.9,0.36);
-            </script>
-            -->
-            
-            
+
             <script src="./scripts/axios/dist/axios.min.js" type="text/javascript"></script>
             <script src="./scripts/socket.io-client/dist/socket.io.js" type="text/javascript"></script>
             <script src="./scripts/canvas-gauges/gauge.min.js" type="text/javascript"></script>
