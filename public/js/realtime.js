@@ -4,20 +4,23 @@ const socket = io('http://localhost:3000/');
 
 const gaugeGas = document.querySelector(".gauge_gas");
 const gaugeFire = document.querySelector(".gauge_fire");
+const gaugeGasText = document.querySelector(".gauge_gas_text");
+const gaugeFireText = document.querySelector(".gauge_fire_text");
 
 function getDataFromDevice(deviceName){
     
     console.log('Listening data for device: ' + deviceName);
     
     socket.on("chegou", (msg)=>{
-        console.log('msg',msg.payload_field);
+      let fire = msg.dados.payload_fields.payload_fire;
+      let gas = msg.dados.payload_fields.payload_gas;
+      
+      gaugeGasText.innerHTML = "(" + gas + ")";
+      gaugeFireText.innerHTML = "(" + fire + ")";
+      
+      setGaugeValue(gaugeGas, convertToMinimumDecimal(gas));
+      setGaugeValue(gaugeFire, convertToMinimumDecimal(fire));
     });
-
-    //Apenas para popular o gauge enquanto os dados reais nao chegam
-    setInterval(()=>{
-      setGaugeValue(gaugeGas, Math.random());
-      setGaugeValue(gaugeFire, Math.random());          
-    }, 3500);
 }
 
 function toggleBounce(event) {
@@ -48,5 +51,23 @@ function setGaugeValue(gauge, value) {
   gauge.querySelector(".gauge__cover").textContent = `${Math.round(value * 100)}%`;
 }
 
-setGaugeValue(gaugeGas, 0.3);
-setGaugeValue(gaugeFire, 0.5);
+function convertToMinimumDecimal(value){
+  if(isNaN(value)) return 0;
+  const val = parseInt(value, 10);
+
+  if(val >= 1000){
+    return val / 10000;
+  }
+  else if(val >= 100){
+    return val / 1000;
+  }
+  else if(val >= 10){
+    return val / 100;
+  }
+  else{
+   return val / 10; 
+  }
+}
+
+setGaugeValue(gaugeGas, convertToMinimumDecimal(0));
+setGaugeValue(gaugeFire, convertToMinimumDecimal(0));

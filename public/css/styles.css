@@ -13,3 +13,7 @@
     position: relative;
 }
 
+.gauge_gas_text,
+.gauge_fire_text{
+    font-size: 10px;
+}
