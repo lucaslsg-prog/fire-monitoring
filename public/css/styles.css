@@ -14,6 +14,7 @@
 }
 
 .gauge_gas_text,
-.gauge_fire_text{
+.gauge_fire_text,
+.gauge_temp_text{
     font-size: 10px;
 }
