@@ -20,7 +20,7 @@
     "express": "^4.17.1",
     "jquery": "^3.5.1",
     "npm": "^6.14.4",
-    "socket.io": "^2.3.0",
+    "socket.io": "^2.5.0",
     "ttn": "^2.3.3"
   },
   "devDependencies": {
